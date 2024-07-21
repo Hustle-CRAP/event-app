@@ -8,8 +8,8 @@ app.secret_key = 'your_secret_key'  # Replace with your actual secret key
 # Database connection
 db = mysql.connector.connect(
     host="localhost",
-    user="your_mysql_username",
-    password="your_mysql_password",
+    user="admin",
+    password="Admin@123",
     database="user_auth"
 )
 
@@ -19,7 +19,7 @@ cursor = db.cursor()
 def home():
     return render_template('home.html')
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/signin', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
@@ -40,7 +40,7 @@ def register():
         flash('User registered successfully')
         return redirect(url_for('login'))
 
-    return render_template('register.html')
+    return render_template('signin.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
